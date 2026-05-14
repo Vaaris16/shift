@@ -45,9 +45,10 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           files: |
-            src-tauri/target/release/bundle/**/*.dmg
-            src-tauri/target/release/bundle/**/*.msi
-            src-tauri/target/release/bundle/**/*.exe
-            src-tauri/target/release/bundle/**/*.AppImage
-            src-tauri/target/release/bundle/**/*.deb
-            src-tauri/target/release/bundle/**/*.tar.gz
+            src-tauri/target/release/bundle/${{ matrix.os == 'macos-latest' && 'dmg/*.dmg' || '' }}
+            src-tauri/target/release/bundle/${{ matrix.os == 'windows-latest' && 'msi/*.msi' || '' }}
+            src-tauri/target/release/bundle/${{ matrix.os == 'windows-latest' && 'exe/*.exe' || '' }}
+            src-tauri/target/release/bundle/${{ matrix.os == 'ubuntu-latest' && 'appimage/*.AppImage' || '' }}
+            src-tauri/target/release/bundle/${{ matrix.os == 'ubuntu-latest' && 'deb/*.deb' || '' }}
+            src-tauri/target/release/bundle/**/shift*.tar.gz
+    fail_on_unmatched_files: false
