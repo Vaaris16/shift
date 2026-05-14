@@ -1,5 +1,4 @@
 use std::{
-    fmt::write,
     fs::{self},
     path::PathBuf,
 };
@@ -17,7 +16,7 @@ fn config_dir() -> PathBuf {
 
 pub fn get_config_path() -> PathBuf {
     let dir = config_dir();
-    fs::create_dir_all(&dir);
+    fs::create_dir_all(&dir).expect("Can not create dir");
 
     dir.join("config_shift.toml")
 }

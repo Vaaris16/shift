@@ -21,7 +21,12 @@ export default function MakeWidget({ label, field, img_path, onPicked }: MakeWid
         onPicked();
       }}
         className="w-60 h-40 rounded-3xl bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: bg ? `url(${bg})` : undefined }}>
+        style={{
+          backgroundImage: bg
+            ? `url("${bg}")`
+            : "linear-gradient(135deg, var(--background-card-primary) 0%, var(--background-card-secondary) 100%)",
+        }}
+      >
 
       </button>
       <h1 className="font-bold text-white">{label}</h1>
